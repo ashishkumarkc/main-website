@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ashish's Web</title>
+    <link rel="icon" sizes="192x192" href="//www.kcak11.com/assets/images/the-k-circle_192x192.png" />
+    <link rel="apple-touch-icon" sizes="128x128" href="//www.kcak11.com/assets/images/the-k-circle_128x128.png" />
+    <link href='//www.kcak11.com/favicon.png' rel='icon' type='image/x-icon' />
+    <meta content="https://cdn.kcak11.com/profile/the-k-circle.png" itemprop="image" />
+    <meta content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0' name='viewport' />
+    <meta name="theme-color" content="#5aa0d3" />
+</head>
+
+<body>
+    <script type='text/javascript'>
+        var renderViaKcak11 = (window.location.href.indexOf("rendervia=kcak11") !== -1);
+        var _customWindow = window.top;
+        if (renderViaKcak11) {
+            _customWindow = window;
+        }
+        var nua = navigator.userAgent.toLowerCase();
+        if (nua.indexOf("android") != -1 || nua.indexOf("iphone") != -1 || nua.indexOf("iemobile") != -1 || nua.indexOf("mobile") != -1) {
+            if (!window.orientation || window.orientation == 0 || window.orientation == 90 || window.orientation == -90 || window.orientation == 180 || window.orientation == 270) {
+                var mDiv = document.createElement("div");
+                mDiv.id = "magicDiv";
+                mDiv.style.position = "absolute";
+                mDiv.style.top = mDiv.style.right = mDiv.style.bottom = mDiv.style.left = "0px";
+                mDiv.style.zIndex = -1000;
+                document.getElementsByTagName("body")[0].appendChild(mDiv);
+                var ref = document.getElementById("magicDiv");
+                if (Math.min(ref.offsetHeight, ref.offsetWidth) <= 480) {
+                    window.isMobileDevice = true;
+                }
+            }
+        }
+
+        if (("" + _customWindow.location.hostname).toLowerCase() === "ashishkumarkc.com") {
+            document.documentElement.style.display = "none";
+            var url = _customWindow.location.protocol + "//www.ashishkumarkc.com";
+            if (("" + _customWindow.location).indexOf("nooverride=true") == -1 && window.isMobileDevice) {
+                url = _customWindow.location.protocol + "//www.ashishkumarkc.com/?mobile=true"
+            }
+            if (renderViaKcak11) {
+                url += url.indexOf("?") === -1 ? "/?rendervia=kcak11" : "&rendervia=kcak11";
+            }
+            _customWindow.location.replace(url);
+        }
+
+        window.akweb = {
+            'importScript': function (scriptSrc) {
+                var scriptElem = document.createElement('script');
+                scriptElem.type = 'text/javascript';
+                scriptElem.src = scriptSrc;
+                document.getElementsByTagName('head')[0].appendChild(scriptElem);
+            },
+            hostname: ('' + _customWindow.location.hostname).toLowerCase(),
+            url: _customWindow.location.href
+        };
+    </script>
+    <script type="text/javascript">
+        if (("" + _customWindow.location).indexOf("nooverride=true") === -1 && window.isMobileDevice && ("" + _customWindow.location.hostname).toLowerCase() === "www.ashishkumarkc.com" && _customWindow.location.href.indexOf("mobile=true") === -1) {
+            akweb.importScript('//cdn.kcak11.com/cdn/resources/k11b/blog-mobile.js?ts=' + (new Date()).getTime());
+        } else {
+            window.executeNow = function () {
+                akweb.importScript('//cdn.kcak11.com/cdn/resources/k11b/framework.js?ts=' + (new Date()).getTime());
+            };
+            akweb.importScript('//cdn.kcak11.com/cdn/resources/k11b/framework11coder.js?ts=' + (new Date()).getTime());
+        }
+    </script>
+</body>
+
+</html>
