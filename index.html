@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.C.Ashish Kumar | UI Engineer & Frontend Architect (@kcak11)</title>
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <link rel="icon" sizes="192x192" href="https://www.kcak11.com/assets/images/the-k-circle_192x192.png" />
+    <link rel="apple-touch-icon" sizes="128x128" href="https://www.kcak11.com/assets/images/the-k-circle_128x128.png" />
+    <link href="https://www.kcak11.com/favicon.png" rel="icon" type="image/x-icon" />
+    <meta content="https://cdn.kcak11.com/profile/the-k-circle.png" itemprop="image" />
+    <meta name="theme-color" content="#5aa0d3" />
+
+    <style>
+        :root {
+            --bg-dark-900: #0b0f19;
+            --bg-dark-800: #111827;
+            --bg-dark-700: #1f2937;
+            --bg-dark-950: #030712;
+            --brand-500: #3b82f6;
+            --brand-400: #60a5fa;
+            --brand-600: #2563eb;
+            --brand-accent: #06b6d4;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(59, 130, 246, 0.4);
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-dark-900);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.5;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+        }
+
+        #dimDiv {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            height: 1px;
+            opacity: 0.001;
+        }
+
+        .white-font {
+            color: #fff;
+        }
+
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.25);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glow-effect:hover {
+            box-shadow: 0 0 35px 0px rgba(6, 182, 212, 0.4);
+        }
+
+        .max-w-7xl {
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .font-mono {
+            font-family: var(--font-mono);
+        }
+
+        .text-brand-400 {
+            color: var(--brand-400);
+        }
+
+        .text-brand-accent {
+            color: var(--brand-accent);
+        }
+
+        .text-emerald-400 {
+            color: #34d399;
+        }
+
+        .text-amber-300 {
+            color: #fcd34d;
+        }
+
+        .text-sky-300 {
+            color: #7dd3fc;
+        }
+
+        .text-purple-400 {
+            color: #c084fc;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            width: 100%;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-container {
+            height: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-img-wrapper {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        .logo-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+            font-size: 0.875rem;
+            font-weight: 5rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-btn {
+                display: none !important;
+            }
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-400);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand-600), var(--brand-500));
+            color: #ffffff;
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--brand-500), var(--brand-400));
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-dark-700);
+            color: var(--text-main);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: #374151;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-icon {
+            padding: 0.625rem;
+            border-radius: 0.75rem;
+            background: var(--bg-dark-700);
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-icon:hover {
+            color: #ffffff;
+            background: #374151;
+        }
+
+        .svg-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            fill: currentColor;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .svg-icon-sm {
+            width: 1rem;
+            height: 1rem;
+            fill: currentColor;
+        }
+
+        .hero-section {
+            position: relative;
+            padding: 5rem 0;
+            overflow: hidden;
+        }
+
+        .grid-hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .grid-hero {
+                grid-template-columns: 7fr 5fr;
+            }
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.875rem;
+            border-radius: 9999px;
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            font-size: 0.75rem;
+            color: var(--brand-400);
+            font-family: var(--font-mono);
+        }
+
+        .pulse-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: #34d399;
+            box-shadow: 0 0 8px #34d399;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--brand-400), #38bdf8, var(--brand-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (min-width: 640px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .stat-val {
+            font-size: 1.75rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+        }
+
+        .stat-lbl {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 0.25rem;
+        }
+
+        .terminal-card {
+            background: var(--bg-dark-950);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 0.75rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 0.375rem;
+        }
+
+        .dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #ef4444;
+        }
+
+        .dot-yellow {
+            background: #f59e0b;
+        }
+
+        .dot-green {
+            background: #10b981;
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .section-subtitle {
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            color: var(--brand-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .card-p {
+            padding: 1.5rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.5rem;
+            background: var(--bg-dark-700);
+            color: var(--text-main);
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-right: 0.375rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.625rem 1rem;
+            border-radius: 0.75rem;
+            background: var(--bg-dark-900);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border-color: var(--brand-500);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            width: 100%;
+            max-width: 48rem;
+            height: 32rem;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        #toast-container {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            z-index: 60;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            pointer-events: none;
+        }
+
+        .toast {
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            background: var(--bg-dark-800);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            transform: translateY(0.5rem);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+    <!-- Self-Contained Developer Social Links (Zero Dependencies) -->
+    <style>
+        .dev-social-links {
+            display: block;
+            align-items: center;
+            position: relative;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .dev-social-btn {
+            margin: 0 5px 0 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #1e293b;
+            color: #cbd5e1;
+            border: 1px solid #334155;
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-sizing: border-box;
+        }
+
+        .dev-social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .dev-social-btn.codepen:hover {
+            background-color: #000000;
+            color: #ffffff;
+            border-color: #000000;
+            box-shadow: 0 6px 16px -2px rgba(0, 0, 0, 0.4);
+        }
+
+        .dev-social-btn.github:hover {
+            background-color: #24292e;
+            color: #ffffff;
+            border-color: #24292e;
+            box-shadow: 0 6px 16px -2px rgba(36, 41, 46, 0.4);
+        }
+
+        .dev-social-btn.linkedin:hover {
+            background-color: #0a66c2;
+            color: #ffffff;
+            border-color: #0a66c2;
+            box-shadow: 0 6px 16px -2px rgba(10, 102, 194, 0.4);
+        }
+
+        .dev-social-btn.npm:hover {
+            background-color: #cb3837;
+            color: #ffffff;
+            border-color: #cb3837;
+            box-shadow: 0 6px 16px -2px rgba(203, 56, 55, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dimDiv"></div>
+    <div id="toast-container"></div>
+
+    <header>
+        <div class="max-w-7xl nav-container">
+            <a href="#hero" class="brand-logo">
+                <div class="logo-img-wrapper">
+                    <img src="data:image/webp;base64,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" alt="K.C.Ashish Kumar Logo">
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 1.125rem;">K.C.Ashish Kumar</div>
+                    <div style="font-size: 0.75rem; color: var(--text-dim);" class="font-mono">@kcak11 &bull; UI Architect</div>
+                </div>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills & Tech</a>
+                <a href="#packages">Open Source / NPM</a>
+                <a href="#domains">Domains</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <button id="open-terminal-btn" class="btn btn-secondary font-mono" style="font-size: 0.75rem;" title="Open Interactive CLI Terminal">
+                    <!-- <span class="text-brand-400" style="font-weight: 700;">&gt;_</span> -->
+                    <svg height="12" viewBox="0 0 269 228" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.839575" y="188.27" width="159" height="55" rx="27.5" transform="rotate(-45 0.839575 188.27)" fill="#60A5FA" />
+                        <rect x="38.8909" width="159" height="55" rx="27.5" transform="rotate(45 38.8909 0)" fill="#60A5FA" />
+                        <rect x="140" y="161" width="129" height="55" rx="27.5" fill="#60A5FA" />
+                    </svg>
+                    <span>CLI</span>
+                </button>
+
+                <button id="mobile-menu-btn" class="btn-icon mobile-btn" aria-label="Toggle Mobile Menu">
+                    <svg class="svg-icon" viewBox="0 0 24 24">
+                        <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" style="display: none; background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid var(--border-color); padding: 1rem 1.5rem;">
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <a href="#about" class="mobile-nav-link" style="color: var(--text-muted); text-decoration: none; padding: 0.5rem 0;">About</a>
+                <a href="#skills" class="mobile-nav-link" style="color: var(--text-muted); text-decoration: none; padding: 0.5rem 0;">Skills & Architecture</a>
+                <a href="#packages" class="mobile-nav-link" style="color: var(--text-muted); text-decoration: none; padding: 0.5rem 0;">Open Source / NPM</a>
+                <a href="#domains" class="mobile-nav-link" style="color: var(--text-muted); text-decoration: none; padding: 0.5rem 0;">Domains</a>
+                <a href="#contact" class="mobile-nav-link" style="color: var(--text-muted); text-decoration: none; padding: 0.5rem 0;">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="max-w-7xl">
+                <div class="grid-hero">
+                    <div>
+                        <div class="badge-pill">
+                            <span class="pulse-dot"></span>
+                            <span>UI Engineer & Frontend Architect &bull; 20+ Years Exp</span>
+                        </div>
+
+                        <h1 class="hero-title">
+                            Building Scalable, Accessible & High-Performance <span class="gradient-text">Web Solutions</span>.
+                        </h1>
+
+                        <p class="hero-desc">
+                            Hello! I'm <strong style="color: #fff;">K.C.Ashish Kumar</strong> (<code class="text-brand-400 font-mono">@kcak11</code>), a passionate UI Engineer and Architect based in Hyderabad, India. I specialize in design systems, micro-frontends, JavaScript/TypeScript ecosystems, cloud-native deployments, and web accessibility standards.
+                        </p>
+
+                        <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                            <a href="#packages" class="btn btn-primary">
+                                <svg class="svg-icon-sm" viewBox="0 0 24 24">
+                                    <path d="M12,2L3,7V17L12,22L21,17V7L12,2M12,4.15L18.4,7.7L12,11.25L5.6,7.7L12,4.15M5,9.22L11,12.55V19.43L5,16.1V9.22M13,19.43V12.55L19,9.22V16.1L13,19.43Z" />
+                                </svg>
+                                <span>Explore NPM Packages</span>
+                            </a>
+                            <a href="https://github.com/kcak11" target="_blank" rel="noopener noreferrer" class="btn-icon" title="GitHub Profile">
+                                <svg class="svg-icon" viewBox="0 0 24 24">
+                                    <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+                                </svg>
+                            </a>
+                            <a href="https://in.linkedin.com/in/kcak11" target="_blank" rel="noopener noreferrer" class="btn-icon" title="LinkedIn Profile">
+                                <svg class="svg-icon" viewBox="0 0 24 24">
+                                    <path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.41 12.92,11.18V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div>
+                                <div class="stat-val" style="color: #fff;">20+</div>
+                                <div class="stat-lbl">Years Experience</div>
+                            </div>
+                            <div>
+                                <div class="stat-val text-brand-400">120+</div>
+                                <div class="stat-lbl">GitHub Repos</div>
+                            </div>
+                            <div>
+                                <div class="stat-val" style="color: #38bdf8;">10+</div>
+                                <div class="stat-lbl">NPM Packages</div>
+                            </div>
+                            <div>
+                                <div class="stat-val text-emerald-400">9+</div>
+                                <div class="stat-lbl">Industry Domains</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="glass-card glow-effect card-p">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                                <div style="position: relative;">
+                                    <div style="width: 4rem; height: 4rem; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, var(--brand-600), var(--brand-accent)); padding: 2px;">
+                                        <img src="data:image/webp;base64,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" alt="K.C.Ashish Kumar" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                                    </div>
+                                    <span style="position: absolute; bottom: 2px; right: 2px; width: 0.875rem; height: 0.875rem; background-color: #10b981; border: 2px solid var(--bg-dark-900); border-radius: 50%;" title="Available for Architectural Leadership"></span>
+                                </div>
+                                <div>
+                                    <h3 style="font-weight: 700; font-size: 1.125rem; color: #fff;">K.C.Ashish Kumar</h3>
+                                    <p style="font-size: 0.75rem; color: var(--text-muted);" class="font-mono">@kcak11 / @ashishkumarkc</p>
+                                    <div style="display: flex; gap: 0.5rem; margin-top: 0.375rem;">
+                                        <span style="font-size: 0.625rem; padding: 0.125rem 0.5rem; border-radius: 0.25rem; background: rgba(59, 130, 246, 0.15); color: var(--brand-400); border: 1px solid rgba(59, 130, 246, 0.3);">GitHub Dev Program</span>
+                                        <span style="font-size: 0.625rem; padding: 0.125rem 0.5rem; border-radius: 0.25rem; background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3);">Arctic Vault Contributor</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="terminal-card">
+                                <div class="terminal-header">
+                                    <div class="window-dots">
+                                        <div class="dot dot-red"></div>
+                                        <div class="dot dot-yellow"></div>
+                                        <div class="dot dot-green"></div>
+                                    </div>
+                                    <span style="color: var(--text-dim); font-size: 0.625rem;">profile.ts</span>
+                                </div>
+                                <div style="line-height: 1.6;">
+                                    <p><span class="text-purple-400">const</span> engineer = {</p>
+                                    <p style="padding-left: 1rem;"><span class="text-brand-400">name</span>: <span class="text-emerald-400">'K.C.Ashish Kumar'</span>,</p>
+                                    <p style="padding-left: 1rem;"><span class="text-brand-400">role</span>: <span class="text-emerald-400">'UI Engineer & Frontend Architect'</span>,</p>
+                                    <p style="padding-left: 1rem;"><span class="text-brand-400">location</span>: <span class="text-emerald-400">'Hyderabad, India'</span>,</p>
+                                    <p style="padding-left: 1rem;"><span class="text-brand-400">expertise</span>: [<span class="text-amber-300">'JavaScript'</span>, <span class="text-amber-300">'TypeScript'</span>, <span class="text-amber-300">'Angular'</span>, <span class="text-amber-300">'React'</span>, <span class="text-amber-300">'NodeJS'</span>],</p>
+                                    <p style="padding-left: 1rem;"><span class="text-brand-400">cloud</span>: [<span class="text-sky-300">'Docker'</span>, <span class="text-sky-300">'Kubernetes'</span>, <span class="text-sky-300">'AWS'</span>, <span class="text-sky-300">'OpenShift'</span>],</p>
+                                    <p style="padding-left: 1rem;"><span class="text-brand-400">a11yCompliant</span>: <span style="color: #60a5fa;">true</span></p>
+                                    <p>};</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; font-size: 0.75rem; color: var(--text-dim);">
+                                <span>📍 Hyderabad, India</span>
+                                <button id="copy-quick-info-btn" style="background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; gap: 0.25rem; font-size: 0.75rem;">
+                                    <svg class="svg-icon-sm" viewBox="0 0 24 24">
+                                        <path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
+                                    </svg>
+                                    <span>Copy Profile JSON</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding" style="background: rgba(17, 24, 39, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+            <div class="max-w-7xl">
+                <div class="section-header">
+                    <div class="section-subtitle">Architectural Philosophy</div>
+                    <h2 class="section-title">About K.C.Ashish Kumar</h2>
+                    <p style="color: var(--text-muted); margin-top: 0.75rem;">
+                        Over two decades of engineering modern web applications, leading enterprise frontend strategies, and championing web accessibility and performance.
+                    </p>
+                </div>
+
+                <div class="grid-3">
+                    <div class="glass-card card-p">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: rgba(59, 130, 246, 0.15); color: var(--brand-400); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" />
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">Frontend Architecture</h3>
+                        <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6;">
+                            Specializing in large-scale modular UI systems, Micro-Frontends, robust reusable component libraries, state management patterns, and design tokens to streamline multi-team enterprise delivery.
+                        </p>
+                    </div>
+
+                    <div class="glass-card card-p">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: rgba(6, 182, 212, 0.15); color: var(--brand-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M12,2A2,2 0 0,1 14,4A2,2 0 0,1 12,6A2,2 0 0,1 10,4A2,2 0 0,1 12,2M21,9H15V22H13V16H11V22H9V9H3V7H21V9Z" />
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">Accessibility & Standards</h3>
+                        <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6;">
+                            Deeply passionate about building WCAG 2.1 compliant, inclusive, and cross-browser accessible interfaces ensuring every user experiences frictionless, high-speed digital interactions.
+                        </p>
+                    </div>
+
+                    <div class="glass-card card-p">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: rgba(168, 85, 247, 0.15); color: #c084fc; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M19.35,10.04C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.04C2.34,8.36 0,10.91 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.04M19,18H6A4,4 0 0,1 2,14C2,11.95 3.53,10.24 5.56,10.03L6.63,9.92L7.13,8.97C8.08,7.14 9.94,6 12,6C14.62,6 16.88,7.86 17.39,10.43L17.69,11.93L19.22,12.04C20.78,12.14 22,13.45 22,15A3,3 0 0,1 19,18M13,13V17H11V13H8L12,9L16,13H13Z" />
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">Cloud-Native & Open Source</h3>
+                        <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6;">
+                            Integrating modern UI development with cloud infrastructure including Docker, Kubernetes, AWS, GCP, Azure, and OpenShift alongside maintainership of widely published NPM utilities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section-padding">
+            <div class="max-w-7xl">
+                <div class="section-header">
+                    <div class="section-subtitle">Technical Mastery</div>
+                    <h2 class="section-title">Skills & Architecture Matrix</h2>
+                </div>
+
+                <div class="grid-4">
+                    <div class="glass-card card-p">
+                        <div style="font-weight: 700; color: #fff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg class="svg-icon-sm text-brand-400" viewBox="0 0 24 24">
+                                <path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" />
+                            </svg>
+                            <span>Core Web Tech</span>
+                        </div>
+                        <div>
+                            <span class="skill-tag">JavaScript (ES6+)</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3 / SASS</span>
+                            <span class="skill-tag">Web Components</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card card-p">
+                        <div style="font-weight: 700; color: #fff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg class="svg-icon-sm" style="color: #38bdf8;" viewBox="0 0 24 24">
+                                <path d="M12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4Z" />
+                            </svg>
+                            <span>Frameworks & Tools</span>
+                        </div>
+                        <div>
+                            <span class="skill-tag">Angular</span>
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Redux / RxJS</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card card-p">
+                        <div style="font-weight: 700; color: #fff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg class="svg-icon-sm text-emerald-400" viewBox="0 0 24 24">
+                                <path d="M4,1H20A1,1 0 0,1 21,2V6A1,1 0 0,1 20,7H4A1,1 0 0,1 3,6V2A1,1 0 0,1 4,1M4,9H20A1,1 0 0,1 21,10V14A1,1 0 0,1 20,15H4A1,1 0 0,1 3,14V10A1,1 0 0,1 4,9M4,17H20A1,1 0 0,1 21,18V22A1,1 0 0,1 20,23H4A1,1 0 0,1 3,22V18A1,1 0 0,1 4,17Z" />
+                            </svg>
+                            <span>Cloud & Infra</span>
+                        </div>
+                        <div>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Azure</span>
+                            <span class="skill-tag">GCP</span>
+                            <span class="skill-tag">OpenShift</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card card-p">
+                        <div style="font-weight: 700; color: #fff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg class="svg-icon-sm text-purple-400" viewBox="0 0 24 24">
+                                <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" />
+                            </svg>
+                            <span>Quality & Architecture</span>
+                        </div>
+                        <div>
+                            <span class="skill-tag">WCAG 2.1 A11y</span>
+                            <span class="skill-tag">Micro-Frontends</span>
+                            <span class="skill-tag">CI/CD Pipelines</span>
+                            <span class="skill-tag">Performance Tuning</span>
+                            <span class="skill-tag">Jest / Cypress</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="packages" class="section-padding" style="background: rgba(17, 24, 39, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+            <div class="max-w-7xl">
+                <div class="section-header">
+                    <div>
+                        <div class="section-subtitle">Ecosystem & Contributions</div>
+                        <h2 class="section-title">Open Source & NPM Packages</h2>
+                    </div>
+                    <a href="https://npmjs.com/~kcak11.npm" target="_blank" rel="noopener noreferrer" style="color: var(--brand-400); text-decoration: none; font-size: 0.875rem; font-weight: 600; margin-top: 0.5rem; display: inline-flex; align-items: center; gap: 0.25rem;">
+                        <span>View All Packages on NPM</span>
+                        <svg class="svg-icon-sm" viewBox="0 0 24 24">
+                            <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="grid-3">
+                    <!-- Package Card 1 -->
+                    <div class="glass-card card-p" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="font-mono" style="font-size: 0.625rem; padding: 0.25rem 0.5rem; border-radius: 0.25rem; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);">npm package</span>
+                            </div>
+                            <h3 class="font-mono" style="font-size: 1.125rem; font-weight: 700; color: #fff;">@kcak11/myip</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">
+                                Lightweight CLI & Node.js utility to fetch public and local IP addresses asynchronously.
+                            </p>
+                        </div>
+                        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;" class="font-mono">
+                            <span style="font-size: 0.75rem; color: var(--text-dim);">npm i @kcak11/myip</span>
+                            <button onclick="copyCommand('npm i @kcak11/myip')" style="background: none; border: none; color: var(--text-muted); cursor: pointer;" title="Copy Install Command">
+                                <svg class="svg-icon-sm" viewBox="0 0 24 24">
+                                    <path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Package Card 2 -->
+                    <div class="glass-card card-p" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="font-mono" style="font-size: 0.625rem; padding: 0.25rem 0.5rem; border-radius: 0.25rem; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);">npm package</span>
+                            </div>
+                            <h3 class="font-mono" style="font-size: 1.125rem; font-weight: 700; color: #fff;">@kcak11/text-scrambler</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">
+                                Isomorphic text scrambling and obfuscation utility for Node.js and Browser environments.
+                            </p>
+                        </div>
+                        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;" class="font-mono">
+                            <span style="font-size: 0.75rem; color: var(--text-dim);">npm i @kcak11/text-scrambler</span>
+                            <button onclick="copyCommand('npm i @kcak11/text-scrambler')" style="background: none; border: none; color: var(--text-muted); cursor: pointer;" title="Copy Install Command">
+                                <svg class="svg-icon-sm" viewBox="0 0 24 24">
+                                    <path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Package Card 3 -->
+                    <div class="glass-card card-p" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="font-mono" style="font-size: 0.625rem; padding: 0.25rem 0.5rem; border-radius: 0.25rem; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);">npm package</span>
+                            </div>
+                            <h3 class="font-mono" style="font-size: 1.125rem; font-weight: 700; color: #fff;">@kcak11/sysinfo</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">
+                                Cross-platform system diagnostics and hardware metrics collector for the Node.js runtime.
+                            </p>
+                        </div>
+                        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;" class="font-mono">
+                            <span style="font-size: 0.75rem; color: var(--text-dim);">npm i @kcak11/sysinfo</span>
+                            <button onclick="copyCommand('npm i @kcak11/sysinfo')" style="background: none; border: none; color: var(--text-muted); cursor: pointer;" title="Copy Install Command">
+                                <svg class="svg-icon-sm" viewBox="0 0 24 24">
+                                    <path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Package Card 4 -->
+                    <div class="glass-card card-p" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="font-mono" style="font-size: 0.625rem; padding: 0.25rem 0.5rem; border-radius: 0.25rem; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);">npm package</span>
+                            </div>
+                            <h3 class="font-mono" style="font-size: 1.125rem; font-weight: 700; color: #fff;">js-queryparams</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">
+                                Cross-browser compliant utility for extracting and parsing URL query parameters.
+                            </p>
+                        </div>
+                        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;" class="font-mono">
+                            <span style="font-size: 0.75rem; color: var(--text-dim);">npm i js-queryparams</span>
+                            <button onclick="copyCommand('npm i js-queryparams')" style="background: none; border: none; color: var(--text-muted); cursor: pointer;" title="Copy Install Command">
+                                <svg class="svg-icon-sm" viewBox="0 0 24 24">
+                                    <path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Package Card 5 -->
+                    <div class="glass-card card-p" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="font-mono" style="font-size: 0.625rem; padding: 0.25rem 0.5rem; border-radius: 0.25rem; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);">npm package</span>
+                            </div>
+                            <h3 class="font-mono" style="font-size: 1.125rem; font-weight: 700; color: #fff;">logger-web</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">
+                                Lightweight browser-first logging framework supporting custom levels and formatting.
+                            </p>
+                        </div>
+                        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;" class="font-mono">
+                            <span style="font-size: 0.75rem; color: var(--text-dim);">npm i logger-web</span>
+                            <button onclick="copyCommand('npm i logger-web')" style="background: none; border: none; color: var(--text-muted); cursor: pointer;" title="Copy Install Command">
+                                <svg class="svg-icon-sm" viewBox="0 0 24 24">
+                                    <path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Package Card 6 -->
+                    <div class="glass-card card-p" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="font-mono" style="font-size: 0.625rem; padding: 0.25rem 0.5rem; border-radius: 0.25rem; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);">npm package</span>
+                            </div>
+                            <h3 class="font-mono" style="font-size: 1.125rem; font-weight: 700; color: #fff;">file-content-replacer</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">
+                                Recursively search and replace content across deep directory trees with pattern matching.
+                            </p>
+                        </div>
+                        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;" class="font-mono">
+                            <span style="font-size: 0.75rem; color: var(--text-dim);">npm i file-content-replacer</span>
+                            <button onclick="copyCommand('npm i file-content-replacer')" style="background: none; border: none; color: var(--text-muted); cursor: pointer;" title="Copy Install Command">
+                                <svg class="svg-icon-sm" viewBox="0 0 24 24">
+                                    <path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="domains" class="section-padding" style="background: rgba(17, 24, 39, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+            <div class="max-w-7xl">
+                <div class="section-header">
+                    <div class="section-subtitle">Industry Experience</div>
+                    <h2 class="section-title">Domain Expertise Across 20+ Years</h2>
+                </div>
+
+                <div class="grid-3">
+                    <div class="glass-card card-p" style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: rgba(59, 130, 246, 0.15); color: var(--brand-400); display: flex; align-items: center; justify-content: center;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M19,6H16V5A3,3 0 0,0 13,2H11A3,3 0 0,0 8,5V6H5A2,2 0 0,0 3,8V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V8A2,2 0 0,0 19,6M10,5A1,1 0 0,1 11,4H13A1,1 0 0,1 14,5V6H10V5M19,19H5V8H19V19Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700; color: #fff; font-size: 1rem;">Retail & E-Commerce</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">High-volume shopping applications, micro-frontends & checkout engines.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card card-p" style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: rgba(16, 185, 129, 0.15); color: #34d399; display: flex; align-items: center; justify-content: center;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M11.5,1L2,6V8H21V6M16,10V17H19V10M11,10V17H14V10M6,10V17H9V10M2,19V21H21V19H2Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700; color: #fff; font-size: 1rem;">Banking & Brokerage</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Secure financial portals, trading dashboards, real-time data feeds.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card card-p" style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: rgba(168, 85, 247, 0.15); color: #c084fc; display: flex; align-items: center; justify-content: center;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700; color: #fff; font-size: 1rem;">Insurance & Healthcare</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">HIPAA compliant patient workflows, policy portals & claim processing.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card card-p" style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: rgba(245, 158, 11, 0.15); color: #fcd34d; display: flex; align-items: center; justify-content: center;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700; color: #fff; font-size: 1rem;">BPM & Enterprise Apps</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Business process automation, workflow engines & internal portals.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card card-p" style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: rgba(239, 68, 68, 0.15); color: #f87171; display: flex; align-items: center; justify-content: center;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M18.92,6.01C18.72,5.42 18.16,5 17.5,5H6.5C5.84,5 5.28,5.42 5.08,6.01L3,12V20A1,1 0 0,0 4,21H5A1,1 0 0,0 6,20V19H18V20A1,1 0 0,0 19,21H20A1,1 0 0,0 21,20V12L18.92,6.01M6.85,7H17.14L18.22,10.08H5.78L6.85,7M6.5,16A1.5,1.5 0 0,1 5,14.5A1.5,1.5 0 0,1 6.5,13A1.5,1.5 0 0,1 8,14.5A1.5,1.5 0 0,1 6.5,16M17.5,16A1.5,1.5 0 0,1 16,14.5A1.5,1.5 0 0,1 17.5,13A1.5,1.5 0 0,1 19,14.5A1.5,1.5 0 0,1 17.5,16Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700; color: #fff; font-size: 1rem;">Automotive Industry</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Connected vehicle telemetry UI & dealership management platforms.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card card-p" style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: rgba(6, 182, 212, 0.15); color: var(--brand-accent); display: flex; align-items: center; justify-content: center;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 style="font-weight: 700; color: #fff; font-size: 1rem;">Security & Compliance</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Identity management UI, zero-trust dashboards, role-based controls.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding">
+            <div class="max-w-7xl">
+                <div class="section-header">
+                    <div class="section-subtitle">Connect</div>
+                    <h2 class="section-title">Let's Collaborate</h2>
+                    <p style="color: var(--text-muted); margin-top: 0.75rem; font-size: 0.875rem;">
+                        Interested in UI architecture consulting, open source collaboration, technical training, or executive engineering roles? Reach out anytime via my official channels!
+                    </p>
+                </div>
+
+                <div class="grid-4" style="margin: 0 auto;">
+                    <div class="glass-card card-p" style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: var(--bg-dark-700); color: var(--brand-400); display: flex; align-items: center; justify-content: center;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18V19.93M17.9,17.39C17.64,16.58 16.9,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.75rem; color: var(--text-dim);">Websites</div>
+                            <a href="https://www.ashishkumarkc.com" target="_blank" class="font-mono" style="font-size: 0.75rem; color: #fff; text-decoration: none; font-weight: 600;">ashishkumarkc.com</a><br>
+                            <a href="https://www.kcak11.com" target="_blank" class="font-mono" style="font-size: 0.75rem; color: #fff; text-decoration: none; font-weight: 600;">kcak11.com</a>
+                        </div>
+                    </div>
+
+                    <div class="glass-card card-p" style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: var(--bg-dark-700); color: var(--brand-400); display: flex; align-items: center; justify-content: center;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.75rem; color: var(--text-dim);">GitHub</div>
+                            <a href="https://github.com/kcak11" target="_blank" class="font-mono" style="font-size: 0.75rem; color: #fff; text-decoration: none; font-weight: 600;">github.com/kcak11</a>
+                        </div>
+                    </div>
+
+                    <div class="glass-card card-p" style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: var(--bg-dark-700); color: var(--brand-400); display: flex; align-items: center; justify-content: center;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.41 12.92,11.18V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.75rem; color: var(--text-dim);">LinkedIn</div>
+                            <a href="https://in.linkedin.com/in/kcak11" target="_blank" class="font-mono" style="font-size: 0.75rem; color: #fff; text-decoration: none; font-weight: 600;">linkedin.com/in/kcak11</a>
+                        </div>
+                    </div>
+
+                    <div class="glass-card card-p" style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: var(--bg-dark-700); color: var(--brand-400); display: flex; align-items: center; justify-content: center;">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.75rem; color: var(--text-dim);">Location</div>
+                            <span style="font-size: 0.75rem; color: #fff; font-weight: 600;">Hyderabad, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="terminal-modal" class="modal-overlay">
+        <div class="glass-card modal-container">
+            <div style="background: var(--bg-dark-800); padding: 0.75rem 1rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <div class="window-dots">
+                        <button id="close-terminal-btn" style="width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #ef4444; border: none; cursor: pointer;"></button>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim); margin-left: 0.5rem;">kcak11@architect-cli:~</span>
+                </div>
+                <span class="font-mono" style="font-size: 0.625rem; color: var(--text-dim);">Type 'help' for commands</span>
+            </div>
+
+            <div id="terminal-logs" class="font-mono" style="padding: 1rem; flex-grow: 1; font-size: 0.75rem; overflow-y: auto; background: var(--bg-dark-950); display: flex; flex-direction: column; gap: 0.5rem; white-space: pre-wrap; line-height: 1.6;">
+            </div>
+
+            <div style="background: var(--bg-dark-800); padding: 0.75rem 1rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; gap: 0.5rem;" class="font-mono">
+                <span class="text-emerald-400" style="font-weight: 700;">$</span>
+                <input type="text" id="terminal-input" placeholder="Enter command (e.g. bio, skills, packages, clear)..." style="width: 100%; background: transparent; border: none; color: #fff; font-family: var(--font-mono); font-size: 0.75rem; outline: none;">
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: rgba(11, 15, 25, 0.9); border-top: 1px solid var(--border-color); padding: 2rem 0; font-size: 0.75rem; text-align: center; color: var(--text-dim);">
+        <div class="max-w-7xl">
+            <p class="white-font">&copy; <span class="current-year"></span> <b class="white-font">K.C.Ashish Kumar (@kcak11)</b>. All rights reserved.</p>
+        </div>
+        <div class="dev-social-links">
+            <!-- GitHub -->
+            <a href="https://github.com/kcak11" target="_blank" rel="noopener noreferrer" title="GitHub - @kcak11" aria-label="GitHub" class="dev-social-btn github">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+            </a>
+
+            <!-- CodePen -->
+            <a href="https://codepen.io/kcak11" target="_blank" rel="noopener noreferrer" title="CodePen - @kcak11" aria-label="CodePen" class="dev-social-btn codepen">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                    <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                    <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+                    <polyline points="2 15.5 12 8.5 22 15.5"></polyline>
+                    <line x1="12" y1="2" x2="12" y2="8.5"></line>
+                </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://in.linkedin.com/in/kcak11" target="_blank" rel="noopener noreferrer" title="LinkedIn - @kcak11" aria-label="LinkedIn" class="dev-social-btn linkedin">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.7a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z" />
+                </svg>
+            </a>
+
+            <!-- npm -->
+            <a href="https://www.npmjs.com/~kcak11.npm" target="_blank" rel="noopener noreferrer" title="npm - ~kcak11.npm" aria-label="npm" class="dev-social-btn npm">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect width="25" height="25" fill="url(#pattern0_4_74)" />
+                    <defs>
+                        <pattern id="pattern0_4_74" patternContentUnits="objectBoundingBox" width="1" height="1">
+                            <use xlink:href="#image0_4_74" transform="scale(0.002)" />
+                        </pattern>
+                        <image id="image0_4_74" width="500" height="500" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAB9KADAAQAAAABAAAB9AAAAAB3bs6AAAAvrklEQVR4Ae3de4xkV34X8Nsz3fPy2OPx7the28muJysIWRJlGYssj+QPMiuCIliB4pV4CGmRdgUS/9sSf/EXDgpCCFkoKyIUsUJgBxKF8Afx8A9agpZdI0y0ElbwhFXWHtvz9ryne6Y53/Kc9nV19Yy7q7pu3arPlWrurXPPPY/POXV/997q7mkaCwECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAIFPJLB09OjRkzXn+vr66bq9W+ulpaXjeY2qa8+ePRttuXv37qm0oeZvtyf7anotq+ZvlzFqX9LaZaUdOTbHjdr3oLRaR+1Pysl2TW/Xda+Oo6W+12v+UeXXY/bu3ft8tu/cufNqTav5S1knktYuK+/r/myPqiNpNb2dP8fFIa+k1yXptczsy7Ftq1pe0uoxydd+X9OzTlnDx7Tb086bMmqb2u2o7UneemzdX99nX81XyjlRtpN3YFnTk6e95NjsS/6kl7oH49TOf2//0VpW8rX3532WlJVX+vBhysf/zTHldTSpqefjez/qV01P/tq+mpZ1rTtl1XlS09r5cmx9X/e302pZte8pq+6v+evxWbf31f0Zq7rdLi/9K+V9M8dkfztP8uW4rGNV9yVvfQ0b1vw5ZtQynL/mqWXX9Vbl1PTkq2XV/qasenz785n9NW+tr67rsffKO1HeX6x11PKyr7w2xrAeW9e1zpSVY1NXO204X97Xeuu+9jrjkeO3anPy1vKz3W5v3telnV48vpFj2mm1jLqu7c/xNW24rKTXfck/3I/Uk2NST92X/HW7lpd10mpZ7fRPsj1cXq2jrttltOsYrnO4nBzXzt8uJ9u1f/UzM7z/fu+XvvWtb5X61gd5CtBG3mzX98vLyzkRphGD/WUSDPYNv19dXc2HcvCq+1J2ysk6+37yZ35+o45bN642+w8ebtZWbzfLK/s20qe9Udsx7Xr7WF8XVl3Pjz6OU9/aPIl5ZZ50N+qTsp9UOVXi7Nunm2NPf+weru7aFHf+z//8rxtxLvErMWttbW0Qt2osXFlZafJKPMy+uuzfv7/5/E/92cHb3//OfxkckzeJeclblxoLkz9x9XN/4rktY9+1y+ebP3zzjY24W9uUdcqpbSoXAIPik7703e//4MNoXmu0JkCAAAECBHonsKd3LdZgAgQIECBAYJOAgL6JRAIBAgQIEOifgIDevzHTYgIECBAgsElAQN9EIoEAAQIECPRPQEDv35hpMQECBAgQ2CQgoG8ikUCAAAECBPonIKD3b8y0mAABAgQIbBIQ0DeRSCBAgAABAv0TEND7N2ZaTIAAAQIENgkI6JtIJBAgQIAAgf4JCOj9GzMtJkCAAAECmwQE9E0kEggQIECAQP8EBPT+jZkWEyBAgACBTQIC+iYSCQQIECBAoH8CAnr/xkyLCRAgQIDAJgEBfROJBAIECBAg0D8BAb1/Y6bFBAgQIEBgk4CAvolEAgECBAgQ6J+AgN6/MdNiAgQIECCwSUBA30QigQABAgQI9E9AQO/fmGkxAQIECBDYJCCgbyKRQIAAAQIE+icgoPdvzLSYAAECBAhsEhDQN5FIIECAAAEC/RMQ0Ps3ZlpMgAABAgQ2CQjom0gkECBAgACB/gkI6P0bMy0mQIAAAQKbBAT0TSQSCBAgQIBA/wQE9P6NmRYTIECAAIFNAsubUqaY8Oqvv9xcvHhxUOPS0lKzvLzcrK+vb7QgaVmSlu32vo1MC75RjbZiuJ/Z7du3mz179mz4Znttba3Zu3dv89BDDzXPPfdc88d++s9vVfSupp/67X/T/MEf/EFz4MCB5u7du4NX5setW7cGc6Fd+crKSvvttrbH8dtWRTOeOXOhfsba68yHzIvMiTqXsv/hhx9unv/bf69ZXtnXSc/+47/7tebtt98etCvzIkvmSZY6prUfg8Qd/lPL2urwarLV/nGP36rcaaWP2/5xj59WP3daz+rq6mC+Ze5l++mnn27+2t/6uzstbuzjOg3ob7zxRvOd73znx65cuXI6A3/s2LH1B02AsXusgA2Bd999dymBOyfsEhRfKfbHy8Q8VSbmi0899dT64cOHOwvo3/ve95pvf/vbzc2bN5dKMPlGadM3Dx06tH727NmlgwcPpr3Hy8n0dJk7zRNPPGHebIzq9jcy/mfOnFnKSWn//v0bBSS9vD+ZeXH9+vVv5sJp3759L2V+fPazn13/whe+0PzUl05u5J/mxne/+92mzJHXS7ueK/Pie6VtJ6ZZv7oIJFadO3duKTcdOUfl3HnixIm3Fjag52R8+fLlQTDPySQnFdNkegI5YecEnRrLCfH53G2UyXnigw8+ePHatWvNkSNHpteYoZpyR3jjxo3ymRk8uXkpAeW9995bunfxcTwfoASa0uavmjdDeDt4G+e61O3Mh/I6XcwT1HPSOl7uhl8oT9VevHr1apMLq66WPKnJcvTo0fVyp76UtloITFsgF7nlovdCeWJ1NMG9nLOm3YSP1dfpHXqubJ588sl1J+SPjcnU3uQi6vz58y/eq3Cwzom7PCm5kICax61dLeVCIxcbr5S7r+f/6I/+aOOEnTZfunTpdGlXbXdXTZyremtALE9EPtavcoLasM52OYEt5S4+F1Z5TN/VknlQXqfKHD1R295VW9S7uAJ5zP7+++8/Vm44clN0Mp+LLpdOa8+Hst4NdImg7o8EcnIswfxoUrocm3sXFC+WJzgbwfyjVtrqSiAnsHI3ciFf1XQZSHOxmSdJ5YL0o0cLXaGod+EF8kSz3IC8lvNWl0und+hdX810CT/rdWdsujxh37lzJz9kcjoXfZbZEiiP3Y92fTGeE2fmSJdzdLZGRWu6FLh3IzR4ctVlOzq9Q++y4+q+v0Duzru8Q0/rcsLOnZhl9gS6DqT57vIzn/lMaYbvzmdvdmhRVwICelfy6iVAYCwBwXwsPgfPoYCAPoeDqksECBAgsHgCAvrijbkeEyBAgMAcCgjoczioukSAAAECiycgoC/emOsxAQIECMyhgIA+h4OqSwQIECCweAIC+uKNuR4TIECAwBwKCOhzOKi6RIAAAQKLJyCgL96Y6zEBAgQIzKGAgD6Hg6pLBAgQILB4AgL64o25HhMgQIDAHAoI6HM4qLpEgAABAosnIKAv3pjrMQECBAjMoYCAPoeDqksECBAgsHgCAvrijbkeEyBAgMAcCgjoczioukSAAAECiycgoC/emOsxAQIECMyhgIA+h4OqSwQIECCweAIC+uKNuR4TIECAwBwKCOhzOKi6RIAAAQKLJyCgL96Y6zEBAgQIzKGAgD6Hg6pLBAj0Q2DPnj3NU089tb53795+NFgrZ1pAQN+F4VlaWmoOHDjQ5MNqIVAFMi9WVlaagwcPNocPH57I/Eh5w0vqefjhh5ujR4+ezLZldgWeeOKJ9ZwnHn/88fXZbaWW9UVguS8NnfV25sT55JNPrmd9586d5saNG0u3b98eXH1Po+3r6+vNuXPnllZXV6dRnTq2IZA5cezYsQvnz59/rB529+7dJmOWu7Oatt115tnly5eXMu+yXZeUfevWrS8vLy+/9LnPfe5EmYvN+++/v5R0y2wJvPvuu0uPPfbYS/v3739hnLkwbq/ee++9pfYcGre8T3J8vZDp8sYn/vP0uRDQP8nMe0CeTMhnn322nJ/Xmx/5kR8Z5F5bWxucZHM31l6SJ0tO8u3tdp72dsqu+Wp6js2S9LzyvgSLwSt3bIJ6lep+nbEpc2JwF/b5z39+sG6P/ag77O20ulw0ru/bt29wSJ0nKb/MgdeSmPLzOPfNN99c/+EPf7hU82ynDnl3R6DOjax/9Ed/tCkXYIPPcmpLWgJN1lnqZ71+3msQHGc8U35uOs6cOZMLzvUEt0FlU/onF6KPPPJI6h70PXM1/Um72hcX1aDdrNrv++1L/vpVRvVKuTkm58gLFy4ky3rp/9x8LgT0DOmYSx6blTui5ktf+lLzwj/8J2OWtrPDf/vf/svmypUr67kbywTdWSmOmrRAufNqLl26tPTFL35x/YUXXhg8as/JJK9xg3nampNTPbm1215PdFlfvXq1+frXv94cOXLkeGnL6XY+290JPPTQQ/nMfrkEtte+9rWvNT/5Mz8/9cacfft088//6T9u3njjjanWnQCbC4ivfOUr63/n77841bprZf/p1X/VvPzyy6/P0+fCl7x1dMdcX7t27cv53ryrJSeHXI3O0+OjriwnWe/NmzebMjaDxzK5A8uSIJu76jy9yYltq1fGc6t9NT1l1e12/qTnlfmQ7+vzFdAk+6Ws8QXKxd5L5WLsdMbp+I//9PgF7qCEo48/02SO1vmygyJ2dMihQ4fyuej0aWIuqEu/j5dxeGtHnZjBgwT0CQxK7pAyMcpj9gmUtrMicuLO3fnZs2dLU5y7d6Y4+aMSbOujzPpIsd5R5875fkvNd7887X2j8ifI5+lRudhcLxcQc3Piave7r9vlcfeL5UnN6TwG3n/o4U66sbzy4dc1pS2vP/rooyen1YhczJTXK5N4SjVOm8u58mg+I/OyeOQ+gZHMD5TcC6K/OoHidlREAkfaUL6TGlxxpk07KshBExUoJ63BXXIesef7ynqXXtcJwnll7Eatd9qYWlZOmAkYqS9pltkRyHiUJzWDIHrx/R82x54+PvXGXTr3zmB+lJuRF0tb8nMXUzlvXL9+/cV758zOJuU8fh4E9Al9hJ555pnBD3hMqLhtF5OAnrv08uj/dHlN5UO57UYu4AF5nFkvtvKYPQE2d8z1h35yUrt3YttyfT+2Grhrnrxvp+WpUYJ5uaC4WObHqZrPunuB8jnNb8a8Vi/uumjRo59+alBtacup8sRoaueNzMt8LurnoIu+p/4sXbZh0v32yH0CovnuPL8+VK46J1DazorIpMx3svlp1dwNWmZDIME1Y5I5kpNYPZG1A/k4La0XA7WMWm5OVvWVNpTHikfLxcTzNZ919wIZlywZpw8uvNdJg27duDr4eY5pnzdyEZPX8PydJkLqLmNwsZw7X51mvbtZlzv0CekmiNYP6ISK3FExs9CGHTV8jg/KCXt4XIbf77T7KWf4pDj8PmXfO3nttBrH7ZJAxiWv5eXNfyBol6r8WLFrt28N3k9qPn6s8Pu8KRe4g68a7pNlKrtKv+fqtz7coU9l2kyvklEn8+nVriYCBHYisHLg0E4Om8gx0w7mafSsBNJyvpz+Dy5MZNRGFyKgj3aRSoAAAQIEeiUgoPdquDSWAAECBAiMFhDQR7tIJUCAAAECvRIQ0Hs1XBpLgAABAgRGCwjoo12kEiBAgACBXgkI6L0aLo0lQIAAAQKjBQT00S5SCRAgQIBArwQE9F4Nl8YSIECAAIHRAgL6aBepBAgQIECgVwICeq+GS2MJECBAgMBoAQF9tItUAgQIECDQKwEBvVfDpbEECBAgQGC0gIA+2kUqAQIECBDolYCA3qvh0lgCBAgQIDBaQEAf7SKVAAECBAj0SkBA79VwaSwBAgQIEBgtIKCPdpFKgAABAgR6JSCg92q4NJYAAQIECIwWENBHu0glQIAAAQK9EhDQezVcGkuAAAECBEYLCOijXaQSIECAAIFeCQjovRoujSVAgAABAqMFBPTRLlIJECBAgECvBAT0Xg2XxhIgQIAAgdECAvpoF6kECBAgQKBXAgJ6r4ZLYwkQIECAwGgBAX20i1QCBAgQINArAQG9V8OlsQQIECBAYLSAgD7aRSqBXggsLS09sJ3Js76+/sB8MhAg0G8BAb3f46f1BAgQIEBgICCgmwgEpiTgLnlK0KohsKACywvab90mMFWBBPNP8nh8J41qXyjU7T17PrpWT1re3717dyfFO4YAgZ4IfPSp70mDNZNAXwVqsK3tH35f07e7zoXCbl0sbLct8hMg0J2AO/Tu7NW8QALDQbcG4HGCei2jMtb3dV3TrQkQWAwBd+iLMc562bFADbKjAnjdt931qC6ljFF1jMorjQCB+RIQ0OdrPPVmRgVqoK1Buwbd+n4n61pG7XLe53vyrIf31TzWBAjMr4BH7vM7tno2YwI1aE+qWbW8UcG77ktd2R6VZ1LtUA4BArMh4A59NsZBK+ZcYG1tbdDDO3fuDNa5k27/JPo43U/Abr9GldsO8OPU5VgCBGZXQECf3bHRsjkSSEBdXl5u9u3bt/ET6TXIj9PNeudd1ymrvZ0Lh9TrV9bGUXYsgX4IeOTej3HSyp4LJMjeunWryR16vZtOWl7j3j3XAF7XoarlpuybN28O6mjv7zmn5hMgMELAHfoIFEkEJi2wd+/ewZ1yAmweiSe4TuIOfat21ouE/fv3D+7OV1ZWxr5w2Kou6QQIzIaAO/TZGAetmHOBBO8E9Sw12OZReN3eafcfdPz169cHFw+rq6uD9U7rcRwBArMvIKDP/hhp4RwJ5O48j90T4A8ePDjYHvdReIL6qDKSfujQocFFw6VLl5YS1C0ECMyvgIA+v2OrZzMkkO/PT58+3Rw+fHgQxBPYL168uNHCBOQamLezrj/slmPqcSm0vX3hwoXm9u3bg3o3KrRBgMDcCQjoczekOjRrAleuXFl68803T7788suvJXDnDj3faSfItx/D7ySo1zvzBPAs9VfWaoBPWrYff/zx9XfeeefB/3l6DrAQINBLAQG9l8Om0X0SuHr1au7MT505c6azZr/33nuCeWf6KiYwHQEBfTrOallggdxFl7v0vATVBZ4Huk5gtwX82tpuCyufAAECBAhMQUBAnwKyKggQIECAwG4LCOi7Lax8AgQIECAwBQEBfQrIqiBAgAABArstIKDvtrDyCRAgQIDAFAQE9Ckgq4IAAQIECOy2gIC+28LKJ0CAAAECUxAQ0KeArAoCBAgQILDbAgL6bgsrnwABAgQITEFAQJ8CsioIECBAgMBuCwjouy2sfAIECBAgMAUBAX0KyKogQIAAAQK7LSCg77aw8gkQIPAAgdWb1x+Qw24CDxYQ0B9sJAcBAjMokP9Xfl6WlQOHOuvK0tJi/yeAe/fufb4z/AlXLKBPEHTRPxgTpFQUgfsK3L59uzl37lz5yPU/GKUPXd2hL+/bf1/ned9Z7I+WgD433RTQJzCUmRDLy8vNPJxcKkf+D28Lga0EZmGu79mzZ/C526qNfUrv6g597fatPjFp6wMElh+wf1d3z8JJYVId7Lovkw7AKW/SZU7KWjndC8zC3Mgj91lox7ijkT50dYc+btvHOb70+/Q4x0/i2NhP8qubruejO/QJzIoE8wxkl4M56QuKSZc3AWZFzIhAne8z0hzN6KFAmUPHe9jsBza56/Nmp3foD9TpSYb9+/e/kqZ2PZiTrD+PMy0EhgUyx86cObN08ODB9S6/e0w7VlZWmrt37zarq6vDzezd+7W1/vdhO+jlnPna2traq9s5ZtJ5cwOWeTTJeTzJc/BO+uusvRO1EceUyXG6yzv0EU0aKykTs+vJOVYHHLxrAvVir+v53nX9kwJexM9Zxq68On3kXt3nZR5lPnZ6hz4vkLdu3frqvb68MKkPedflpD/zMj5dW85T/ZkTn/rUp9b37ds3uDvusm85Ic/DHE0/lpdXOqPswvCDDz5Yundh2Ok5s/T9YnnCc2pS+Hli1OXiDn0C+uXR0UycWLr4YE6ATxE9E8gjynqX3lXTM9fnYb7PSz+6mgfj1lv8O31KMG77h4/v9A59kj9dONyxab4/evToevqSwN7lUj0PHDjQlKcGY53wcqKpj6S67JO6Z08gcyN3IvlVza6WXFTMyoX0OAbpRzy7+g59/6GHOx3HcezGPTZzuPifKOe5E+OWVY/PWHa5dHqH3uUJYZLoCaRlcryeD2dXS+6Y8kNC5fHR6+UHTppDh8b7y1PpU71A6KpP6p1NgRqE8sdduloyNzPPc/Ha1yWf1/xxnJs3b3b2yP3i+z8cfM6n/VkvY3e8fG1zsssAWJ8yTfLGpZbZ1ZzsNKB3/X3DpNAvXLiwdOXKlecmOTG227Z8IHOCLRdJJ3Lncv36+H8bOiccC4G2QA1C+eyWn3Rv75rqdgJBCeYnH3roocFvmEy18glVls9pnqRl/emnnp1Qqdsr5tjTxwcB/ezZs+X0Nb2/ulfG7q1yYfiNrn9DIfNoUhcVKafrmNZpQM+VfpnMF7c3BWcv97Fjx9YfeeSRC9P8QAwrxLI+8bh27dpYk7RcHFzMBcK0r9qH+zSv7xMUP/3pT7/S5XzZqW1OwCWIvpST1yQuGnfajhxX5vtLxbK3f4e7BpLc1V2/enkcih0f+9bv//fBueIzn/lMac70HheXwHex9PvkuE8Sd9zxcuAkzm/5DD/66KPHs3733XeXur5A6e5LsAJ648aN5tKlS489+eST6wXilwvK8RKYevMBrRckubrNo7/y6Gx6n4ihmZzJmUmVD0iCRXmctckxH9jiPPjdzzin/VmSnmPrdjlhD7a7fnw0aMSc/BPfJ554Yj0nssz5+B8/fnz96tWrnfWwPf6ZF+Xi+sUaJOt8SOPqvLl8+fJXy4XrS+VnRl7IsV2ejPN5K/PzRNpQ2nOyzPfXymfg1bh+0vWk4O9XXy446l1bO1/Sc2FXLr5/OX04dPjIpJqzrXJ+7Cf/TPmq7tcGX11kTMu5Y/D3BUpbN34/O9tpewpOuzM3kja81Dzt9PZ4pPwsOfbw4cNN5n6eTnS1pO6c4+Kfz+ZwO0b1p/Y/edOPnPvL+A5+sC5PrGofh8ua1vtOA3qZPLm6uZATRq7WptXpSdWTD2o5AR59+OGHv1GC4K/WD+6kyt9uOZmY5Tu5gWVM65Lt0raLZT2YeOUDeTz7anuzzkSsJ/E8ui/jMvjA1TKsdy4Q1wTvXL2XE/g388Ev5q+XE9rEfhhnJ63LCakumRP1M1jSc/d0NPvS9jov7s2R47kzLyfApnzNVA+f+jrfn+eJVNqSi5B7bR3M6/Ql72t/6vvh9aQaPVxu+337czicnoBSLkReyAX0H775RvMn//RfmFSTPnE5//d//95gfPM9fi4wstQ2Z123a9vbacOV1Dyj0stxeep3tOQZ7E4wz3zKOaurJXUX/8EcSrtqX2t7RvWnnjOTJ8eUC9zcnR8/cuTI6VLeW+V9PbyT9dJ3v/+Dj878U27Ct3/3P+QENwgsdaIEqb0Mv2/vm4XtnFTqibE8em9O/Oxf6qRZl8690/yv//HtwVOPciLbaEN7AtbEWFfX5M12+pC8Wed9gs7Jv/I36iFTX/+zf/QPmt/4jd9YSnsSCPu8PPPMM+vld7ebX/zFXxycQOKbgJQT+qjx6aqv9YSW9tU5kjZmjmepF3254MuJ8Mtf+ZtdNbX5b6/9ZnP+/PmNIJSG1DbXdWeNG6q4erbb2M4Sy5//y3+9nTTV7d879VvNxYsXcwE0GOuMc56eZm7WsR+nQRmP9phku5b97LPPNj/+p35unOJ3fGwuZt56662Nz+BwO1Nwxq69DPcjY5c8+UykT+Xmrvm5X/il9iFT3e40oE+1pyrrlcC8BPTc9eSk+IUvfGH9X/z6v+/VGGgsAQL9EvjoVq5f7dZaAr0QyNOF8hguPzTZi/ZqJAEC/RUQ0Ps7dlreE4H6qLonzdVMAgR6KiCg93TgNJsAAQIECLQFBPS2hm0CBAgQINBTAQG9pwOn2f0SyE/HWggQILCbAgL6buoqmwABAgQITElAQJ8StGoIECBAgMBuCgjou6mrbAIECBAgMCUBAX1K0KohQIAAAQK7KSCg76ausgkQIECAwJQEBPQpQauGAAECBAjspoCAvpu6yiZAgAABAlMSENCnBK0aAgQIECCwmwIC+m7qKpsAAQIECExJQECfErRqti8wS/9X+PZb7wgCBAhMV0BAn6632rYhsG/fvsH/Jb6NQ2QlQIDAwgoI6As79LPf8YMHD37v0UcfnYs/gr60tDT74FpIgECvBQT0Xg/f/Da+BsC67ntP/ecsfR9B7Scw+wLLs99ELVxEgQTA27dvP3fz5s1F7L4+EyBAYNsC7tC3TeaAaQjMy515tXKHXiWsCRDYLQEBfbdklTuWQALgysrKK/v3739lrIJm5OA9e3zUZmQoNIPA3Ao4y8zt0Pa7Y/N2h97v0dB6AgT6IOA79D6M0oK28caNG1/1u+gLOvi6TYDAtgXcoW+bzAHTEpin7509cZjWrFEPgcUVENAXd+xnuue5M5+ngD5PfZnpiaNxBBZYQEBf4MGf9a4/9NBDr+zdu3fWm/nA9gnmDySSgQCBCQgI6BNAVMTkBXKHfuTIkeevXbs2+cKnXKLH7VMGVx2BBRXwQ3ELOvCz3u21tbXmzp07zTPPPLN+5syZpU996lPr5f2r58+f/2ravry83Bw4cKDJH57JXfxOg2bKyZL6sj28Tvmj0pOv1ps78LQ1S/KWX7U7fuvWrdNJT75z584tlT+SMxd/wnbQSf8QIDCTAgL6TA6LRiVYXr9+/WK5Uz+V3+EuAfLHyt92f+v48ePrP/jBD0r8XhoE8fZ6J2o5PkvqyPao9YP2J3DXn8ZPGeX96ZST9LzKVwcn8x/NWAgQILCbAsv/+Tf/dXP58uXB3UYqundCGrwvf9hjcKIqdxcfO3nWk167YTkBlzuTjeNzIqtL8mfJXUxeuWtpn/DqSTV5clz2pe7h9LzPvpw886p3RTkuS7vOul3vopI/abXMul3blj7W8pKW4+qSY3NcXjku+Wr9eZ/89ZhaTs1fj806S/Ll5N4+waeM+qp1rq6uDpyqVY6vr+St5aWdKavWl+OT1m5T8tb91aPWU9fJk2NSdgmkzbFjx5qf+4Vfqrunvv6Jn/iJ1Hm0tOf58hpMpvQhfX3uuefW09Ys93YNtrv4J/WnXXUZfl9dn3766Zqlk/Xv/ta3mg8++GDwGU0b0648TWi3PdvZl1d8M1eSL696TF2nE5nrmaf5PLTLyb76Pus8SUldteysa55aT8oov6Y4OC7H1Hma7VpWjmufY5KetmXdng/l4m9QV+pIevbXuusxKT9ljVpq3bXv6WOWlJVy2uUlPX2r+/K+vdT6U1Y9b7T7X7frvszvtlXKSn1ZUlZeWdLH2ve0ty61bXkf9+TJkvKz5H3KzzHZTt9qG2o99X3yZzv5065s1/LqvnpMys98yP7aznZbkj9Lysor+5K3Hp99NX/Sc97LkrJqe9r7s53+ZZ26k6e+6nHZl1e1arcrddT8WVfXpNfyss7x2R+vem7Pdl7ZlziVJXmyJC370v6Ule1ab/qdJfvSplpP8iVPzZsystT87XYOdtz7J/nyBDGfm+Q5fPhws1Tuej42SPWAWmje18Zmu52e93XZKr3ub69T3lb577evXcaDtmubt6pn+PigZmnnr9vDZeV9TWuXk/yj0tt5ah217Pa+9rHt7a3y1PRRZdV6ap5R79v72tuZaI899tj6r/zKrzR//Is/295lu6cCf/Uv/rnm7NmzZap8dPHR3n5Qt9rzsb2d44bfD5d1v3rqvgeVkTKTt+avddTj2un1s1zzjFqPKmtUvqTVOrba3657qzw1fauyanoNLDX//db1mO3Uf7/yxt1X21PLmZV21fZsZ52+tPuTvrTfp6zav+F9o94P1z1cfru8mreWX9+PWte5nvKSfznR3UJgWKAE9dcfe/zpE8Pp3vdTIHdiuSuwECAwvwJ+yn1+x3asnpXHPycOHT4yVhkOnh2BPM6zECAw3wIC+nyP7457Vx7lXFxddUe3Y0AHEiBAYMoCAvqUwftSXXnk/s1z7/y/vjRXOwkQILDwAgL6wk+BrQGGfwhk65z2ECBAgEDXAgJ61yMww/Vv5yduZ7gbmkaAAIGFEBDQF2KYt9/J8isQx5eXP/wdy+0f7QgCBAgQmLaAgD5t8Z7UVx63n15b+/APavSkyZpJgACBhRYQ0Bd6+HWeAAECBOZFQECfl5GccD/yyH3CRSqOAAECBHZRQEDfRdy+F/3IY0/0vQvaT4AAgYURENAXZqi319HcoX9w4b3tHSQ3AQIECHQmIKB3Rj/bFZdfWTvx2R/3p9xne5S0jgABAh8JCOgfWdhqCeR/7rl6+VwrxSYBAgQIzLKAgD7Lo9Nh2/JHZR799FMdtkDVBAgQILAdAQF9O1ryEiBAgACBGRUQ0Gd0YDSLAAECBAhsR0BA346WvAQIECBAYEYFBPQZHRjNIkCAAAEC2xEQ0LejtWB511ZvL1iPdZcAAQL9FRDQ+zt2u9ryu3fvNssr+3a1DoUTIECAwOQEBPTJWc5VSeV/W2sunXtnrvqkMwQIEJhnAQF9nkd3jL6VO/TXxzjcoQQIECAwZQEBfcrgfaku/x/6+TM/6EtztZMAAQILLyCgL/wU2Brg4OEjW++0hwABAgRmSkBAn6nhmJ3GlEfup65fuTQ7DdISAgQIELivgIB+X57F3ZmAvra2trgAek6AAIGeCQjoPRuwaTU336HnP2ixECBAgEA/BJyx+zFOU2/l6upq8/bbb0+9XhXujsCdO3d2p2ClEiAwMwLLM9MSDZkpgdu3bze/8zu/01y9erU5fPhws7Ky0hw6dKg5cOBAs7z80bRJoMgrv7eepT6mz/+nnrSann3Jlz9Yk325+89rOM/evXsHdaWO7E87UmbS6xODHJ+l1pUykj/pSWvXmeP27ds3qDd11zbUsgYFlX9yTI7dv3//oP7atlu3bg2OTb5ab/Lkgidty1LrThnJU9epr/YjabWOHFPLqvXUY+q+HJtXlnYfclz7tVL++M+RYx/+N7dn3/7DDZMcmzKvXbvWfP/7328uX778IdqgRP8QIDCPAj7k8ziqE+pTglGCYQ0+WSe4lPXxvGo1JXicqts1cNV1TR+1Tnn1VffnfZYS6E5mXQLwqXawS1pdah0Jijkux5S003nVPCV9o61JL23N/rr7Y+uk37twGNSdne2yauaUOapdtdzah6zb9W9V3nCb6vG1vqyTlv7V8mq7qlPe51UuSr6Z/KXMrDYuInLxUds32OEfAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgS2EPj/cYFuNKgu3qIAAAAASUVORK5CYII=" />
+                    </defs>
+                </svg>
+            </a>
+        </div>
+    </footer>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YT7D8WD11G"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YT7D8WD11G');
+    </script>
+    <script>
+        ((function () {
+            var cliButton = document.getElementById("open-terminal-btn");
+            function adjustLayout() {
+                var screenWidth = document.getElementById("dimDiv").offsetWidth;
+                if (screenWidth < 415) {
+                    cliButton.style.display = "none";
+                } else {
+                    cliButton.style.display = "flex";
+                }
+            }
+            adjustLayout();
+            setInterval(adjustLayout, 1000);
+        })());
+    </script>
+    <script>
+        document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `
+                <svg class="svg-icon-sm text-emerald-400" viewBox="0 0 24 24">
+                    <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
+                </svg>
+                <span>${message}</span>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => toast.classList.add('show'), 10);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function copyCommand(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => showToast(`Copied "${text}" to clipboard!`));
+            } else {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast(`Copied "${text}" to clipboard!`);
+                } catch (err) {
+                    showToast('Failed to copy text.');
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+
+        const copyQuickInfoBtn = document.getElementById('copy-quick-info-btn');
+        if (copyQuickInfoBtn) {
+            copyQuickInfoBtn.addEventListener('click', () => {
+                const profileObj = {
+                    name: 'K.C.Ashish Kumar',
+                    handle: '@kcak11',
+                    role: 'UI Engineer & Frontend Architect',
+                    location: 'Hyderabad, India',
+                    experienceYears: '20+',
+                    expertise: ['JavaScript', 'TypeScript', 'Angular', 'React', 'NodeJS'],
+                    cloud: ['Docker', 'Kubernetes', 'AWS', 'OpenShift'],
+                    a11yCompliant: true
+                };
+                copyCommand(JSON.stringify(profileObj, null, 2));
+            });
+        }
+
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.style.display === 'none' || !mobileMenu.style.display;
+                mobileMenu.style.display = isHidden ? 'block' : 'none';
+            });
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.style.display = 'none';
+                });
+            });
+        }
+
+        const terminalModal = document.getElementById('terminal-modal');
+        const openTerminalBtn = document.getElementById('open-terminal-btn');
+        const closeTerminalBtn = document.getElementById('close-terminal-btn');
+        const terminalInput = document.getElementById('terminal-input');
+        const terminalLogs = document.getElementById('terminal-logs');
+
+        function openTerminal() {
+            if (terminalModal) {
+                terminalModal.classList.add('active');
+                terminalLogs.innerHTML = `
+                <p class="text-brand-400" style="font-weight: 700;">K.C.Ashish Kumar Interactive Terminal [Version <span class="current-year">${new Date().getFullYear()}</span>.1]</p>
+                <p style="color: var(--text-muted);">Welcome to @kcak11 CLI. Type <span class="text-amber-300">'help'</span> to see available commands.</p>
+                `;
+                if (terminalInput) {
+                    setTimeout(() => terminalInput.focus(), 100);
+                }
+            }
+        }
+
+        function closeTerminal() {
+            if (terminalModal) {
+                terminalModal.classList.remove('active');
+            }
+        }
+
+        if (openTerminalBtn) openTerminalBtn.addEventListener('click', openTerminal);
+        if (closeTerminalBtn) closeTerminalBtn.addEventListener('click', closeTerminal);
+
+        if (terminalModal) {
+            terminalModal.addEventListener('click', (e) => {
+                if (e.target === terminalModal) {
+                    closeTerminal();
+                }
+            });
+        }
+
+        // Terminal Command Processor
+        const commands = {
+            help: `
+<span class="text-amber-300">Available Commands:</span>
+  • <span class="text-brand-400">bio</span>      : Learn about K.C.Ashish Kumar
+  • <span class="text-brand-400">skills</span>   : View technical mastery & architecture skills
+  • <span class="text-brand-400">packages</span> : View NPM open source packages
+  • <span class="text-brand-400">domains</span>  : View industry domain experience
+  • <span class="text-brand-400">contact</span>  : Get official links and contact info
+  • <span class="text-brand-400">whoami</span>   : View current user profile info
+  • <span class="text-brand-400">clear</span>    : Clear terminal screen
+  • <span class="text-brand-400">exit</span>     : Close CLI window`.trim(),
+
+            bio: `
+<span class="text-emerald-400">K.C.Ashish Kumar (@kcak11)</span>
+UI Engineer & Frontend Architect based in Hyderabad, India with 20+ years of experience.
+Specializing in Design Systems, Micro-Frontends, JavaScript/TypeScript, Web Accessibility (WCAG 2.1), and Cloud-Native deployments.`.trim(),
+
+            skills: `
+<span class="text-emerald-400">Core Matrix:</span>
+  • Languages    : JavaScript (ES6+), TypeScript, HTML5, CSS3/SASS
+  • Frameworks   : Angular, React.js, Node.js, Redux, RxJS, Tailwind CSS
+  • Cloud & Infra: Docker, Kubernetes, AWS, GCP, Azure, OpenShift
+  • Quality      : WCAG 2.1 A11y, Micro-Frontends, CI/CD, Jest, Cypress`.trim(),
+
+            packages: `
+<span class="text-emerald-400">Popular NPM Packages (@kcak11):</span>
+  • @kcak11/myip
+  • @kcak11/text-scrambler
+  • @kcak11/sysinfo
+  • js-queryparams
+  • logger-web
+  • file-content-replacer`.trim(),
+
+            domains: `
+<span class="text-emerald-400">Industry Domains (20+ Years):</span>
+  • Retail & E-Commerce
+  • Banking & Brokerage
+  • Insurance & Healthcare
+  • BPM & Enterprise Workflows
+  • Automotive Telemetry
+  • Security & Compliance`.trim(),
+
+            contact: `
+<span class="text-emerald-400">Connect:</span>
+  • Websites : https://www.ashishkumarkc.com | https://www.kcak11.com
+  • GitHub   : https://github.com/kcak11
+  • LinkedIn : https://in.linkedin.com/in/kcak11
+  • Location : Hyderabad, India`.trim(),
+
+            whoami: `
+<span class="text-sky-300">guest@kcak11-portfolio:~</span>
+Role       : Visitor / Developer
+Permission : Read-Only CLI Access
+Session    : Active`.trim()
+        };
+
+        if (terminalInput && terminalLogs) {
+            terminalInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const rawVal = terminalInput.value.trim();
+                    const cmd = rawVal.toLowerCase();
+                    terminalInput.value = '';
+
+                    if (!rawVal) return;
+
+                    // Append user input entry
+                    const userEntry = document.createElement('div');
+                    userEntry.style.marginTop = '0.5rem';
+                    userEntry.innerHTML = `<span class="text-emerald-400" style="font-weight: 700;">$</span> <span style="color: #fff;">${rawVal}</span>`;
+                    terminalLogs.appendChild(userEntry);
+
+                    if (cmd === 'clear') {
+                        terminalLogs.innerHTML = '';
+                    } else if (cmd === 'exit') {
+                        closeTerminal();
+                    } else if (commands[cmd]) {
+                        const response = document.createElement('div');
+                        response.style.lineHeight = '1.6';
+                        response.innerHTML = commands[cmd];
+                        terminalLogs.appendChild(response);
+                    } else {
+                        const errorMsg = document.createElement('div');
+                        errorMsg.style.color = '#ef4444';
+                        errorMsg.textContent = `Command not recognized: '${rawVal}'. Type 'help' for available commands.`;
+                        terminalLogs.appendChild(errorMsg);
+                    }
+
+                    terminalLogs.scrollTop = terminalLogs.scrollHeight;
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
