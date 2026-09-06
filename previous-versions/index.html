@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ashish's Web</title>
+    <script type="text/javascript" src="assets/scripts/legacy.js"></script>
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <link rel="icon" sizes="192x192" href="https://www.kcak11.com/assets/images/the-k-circle_192x192.png" />
+    <link rel="apple-touch-icon" sizes="128x128" href="https://www.kcak11.com/assets/images/the-k-circle_128x128.png" />
+    <link href="https://www.kcak11.com/favicon.png" rel="icon" type="image/x-icon" />
+    <meta content="https://cdn.kcak11.com/profile/the-k-circle.png" itemprop="image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#5aa0d3" />
+    <script id="main-stylesheet" type="k11-script"></script>
+</head>
+
+<body style="visibility:hidden;">
+    <div id="mainBG" class="mainbg"></div>
+    <div id="content_wrapper" class="content-wrapper effect-shadow-inner portrait-mode-content hidden">
+        <div id="top_bar">
+            <img src="assets/images/the-k-circle.webp" class="logo" />
+            <span class="logoText">Ashish's Web</span>
+        </div>
+        <div id="main_content">
+            <div id="text_content" class="text-content">Hello! I'm K.C.Ashish Kumar, a UI Engineer / Architect with over {{EXPERIENCE}} years of experience in creating web solutions for various domains. I'm passionate about building accessible, responsive, and user-friendly interfaces that work across browsers and devices.<br><br>I have expertise in web technologies such as JavaScript, TypeScript, Angular, NodeJS, CSS3, HTML5, . . . <br><br>I also have knowledge of accessibility standards and tools. I follow best practices and design patterns to ensure high quality and performance of my code.<br><br>In addition to the aforementioned skills, I possess expertise in cloud-native technologies including Docker and Kubernetes. <br class="line-break-desktop-only">My experience extends across multiple cloud platforms like AWS, Azure, GCP, and OpenShift.<br><br>I have worked on projects related to Retail, e-commerce, Banking, Brokerage, Insurance, Healthcare, BPM, Automotive, and Security. I have also supported business development, technical training, and client satisfaction activities. I enjoy working in agile teams and collaborating with other developers and stakeholders.<br><br>Always up for a challenge and eager to expand my skillset.<br><br>Feel free to connect with me on LinkedIn. I'd love to hear from you!</div>
+            <div id="link_content" class="link-content topGap">
+                <span class="sub-heading">Connect / Follow me on:</span>
+                <div class="btnWrapper">
+                    <div class="connectBtn" data-url="https://www.linkedin.com/in/kcak11">
+                        <img src="assets/images/linkedin.webp" class="icon" />
+                        <span>LinkedIn</span>
+                    </div>
+                    <div class="connectBtn" data-url="https://www.github.com/kcak11">
+                        <img src="assets/images/github.webp" class="icon" />
+                        <span>Github</span>
+                    </div>
+                    <div class="connectBtn" data-url="https://www.npmjs.com/~kcak11.npm">
+                        <img src="assets/images/npm.webp" class="icon" />
+                        <span>NPM</span>
+                    </div>
+                    <div class="connectBtn" data-url="https://codepen.io/kcak11">
+                        <img src="assets/images/codepen.webp" class="icon" />
+                        <span>Codepen.io</span>
+                    </div>
+                    <div class="connectBtn" data-url="https://twitter.com/kcak11">
+                        <img src="assets/images/twitter.webp" class="icon" />
+                        <span>Twitter</span>
+                    </div>
+                    <div class="connectBtn" data-url="https://www.facebook.com/kcak11">
+                        <img src="assets/images/facebook.webp" class="icon" />
+                        <span>Facebook</span>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+    <div id="copyright_bar" class="copyright portrait-mode-content hidden">Copyright &copy; 2006 - {{CURRENT_YEAR}}. All
+        Rights Reserved.</div>
+    <div class="landscape-mode-msg">
+        <div class="info  effect-shadow-inner">
+        </div>
+    </div>
+    <div id="hiddenElem"></div>
+    <script id="main-js" type="k11-script"></script>
+    <script type="text/javascript">
+        ((function () {
+            var requestID = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("").sort(function () { return Math.random() - Math.random(); }).join("");
+
+            var mainStyleTag = document.getElementById("main-stylesheet");
+            var newStyleTag = document.createElement("link");
+            newStyleTag.rel = "stylesheet";
+            newStyleTag.type = "text/css";
+            newStyleTag.href = "assets/styles/main.css?" + requestID;
+            mainStyleTag.parentNode.replaceChild(newStyleTag, mainStyleTag);
+
+            var mainJSTag = document.getElementById("main-js");
+            var newTag = document.createElement("script");
+            newTag.type = "text/javascript";
+            newTag.src = "assets/scripts/main.js?" + requestID;
+            mainJSTag.parentNode.replaceChild(newTag, mainJSTag);
+        })());
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YT7D8WD11G"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YT7D8WD11G');
+    </script>
+</body>
+
+</html>
